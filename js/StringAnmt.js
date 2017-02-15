@@ -56,7 +56,8 @@
             var H = this.H;
             var colLen = this.colLen;
             var rowLen = this.rowLen;
-            var fontSize = parseInt(this.fontSize)
+            var fontSize = parseInt(this.fontSize);
+            var fm=null,data=[];
 
             ctx.font = '0px Arial'.replace('0', this.fontSize);
             ctx.fillStyle = this.color;
@@ -66,11 +67,13 @@
                 if (self.isPlay) {
                     ctx.drawImage(self.vdo, 0, 0, W, H);
                     try {
-                        var fm = ctx.getImageData(0, 0, W, H);
-                        var data = fm.data;
+                        fm = ctx.getImageData(0, 0, W, H);
                     } catch (err) {
                         console.log(err);
                         ctx.clearRect(0, 0, W, H);
+                    }
+                    if(fm){
+                        data=fm.data;
                     }
                     ctx.clearRect(0, 0, W, H);
                     var str = '';
@@ -84,6 +87,8 @@
                         }
                         ctx.fillText(str, 0, j * fontSize, W)
                     }
+                    fm=null;
+                    data=[];
                 }
                 raf(loop)
             }
