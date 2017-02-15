@@ -67,12 +67,12 @@
                     ctx.drawImage(self.vdo, 0, 0, W, H);
                     try {
                         var fm = ctx.getImageData(0, 0, W, H);
+                        var data = fm.data;
                     } catch (err) {
                         console.log(err);
                         ctx.clearRect(0, 0, W, H);
                     }
                     ctx.clearRect(0, 0, W, H);
-                    var data = fm.data;
                     var str = '';
                     for (var j = 0; j < colLen; j++) {
                         str = '';
