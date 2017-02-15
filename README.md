@@ -1,5 +1,6 @@
 ## StringAnmt
-一个在web开启你的摄像头，然后将视频处理成字符串的动画的简单封装库。
+一个在web开启你的摄像头，然后将视频处理成字符串的动画的简单封装库。  
+这里是[demo](https://Char-Ten.github.io/StringAnmt)
 ---
 * 快速使用：
 ```html
