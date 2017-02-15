@@ -67,8 +67,6 @@
                 if (self.isPlay) {
                     ctx.drawImage(self.vdo, 0, 0, W, H);
                     fm = ctx.getImageData(0, 0, W, H);
-
-                        console.log(err);
                         ctx.clearRect(0, 0, W, H);
 
                     if(fm){
