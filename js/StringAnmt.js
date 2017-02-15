@@ -14,7 +14,7 @@
         this.cvs = document.getElementById(conf.canvasId);
         this.text = conf.text || '丨一二三十上土王田正回困国囸昌晶';
         this.fontSize = conf.fontSize || '10';
-        this.fontStyle = conf.fontStyle || '#0f0';
+        this.color = conf.color || '#0f0';
 
         this.ctx = this.cvs.getContext('2d');
         this.W = this.cvs.width = this.cvs.offsetWidth;
@@ -42,6 +42,9 @@
         _AddText: function(gray) {
             var d = parseInt(256 / this.text.length);
             var i = parseInt(gray / d);
+            if (i > this.text.length - 1) {
+                i = this.text.length - 1;
+            }
             return this.text[i];
         },
         _begin: function() {
@@ -56,16 +59,21 @@
             var fontSize = parseInt(this.fontSize)
 
             ctx.font = '0px Arial'.replace('0', this.fontSize);
-            ctx.fillStyle = this.fontStyle;
+            ctx.fillStyle = this.color;
             loop();
 
             function loop() {
                 if (self.isPlay) {
                     ctx.drawImage(self.vdo, 0, 0, W, H);
-                    var fm = ctx.getImageData(0, 0, W, H);
+                    try {
+                        var fm = ctx.getImageData(0, 0, W, H);
+                    } catch (err) {
+                        console.log(err);
+                        ctx.clearRect(0, 0, W, H);
+                    }
+                    ctx.clearRect(0, 0, W, H);
                     var data = fm.data;
                     var str = '';
-                    ctx.clearRect(0, 0, W, H);
                     for (var j = 0; j < colLen; j++) {
                         str = '';
                         for (var i = 0; i < rowLen; i++) {
@@ -105,14 +113,12 @@
         play: function() {
             this.isPlay = true;
         },
-        parse: function() {
+        pause: function() {
             this.isPlay = false;
         },
-        playAndParse: function() {
+        playAndPause: function() {
             return this.isPlay = !this.isPlay;
         }
-
-
     }
     return Main
 });
