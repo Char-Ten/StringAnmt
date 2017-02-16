@@ -51,41 +51,49 @@
             var self = this;
             var isPlay = this.isPlay;
             var raf = this.raf;
-            var ctx = this.ctx;
-            var W = this.W;
-            var H = this.H;
-            var colLen = this.colLen;
-            var rowLen = this.rowLen;
-            var fontSize = parseInt(this.fontSize);
-            var fm=null,data=[],str='';
 
-            ctx.font = '0px Arial'.replace('0', this.fontSize);
-            ctx.fillStyle = this.color;
+            this.ctx.font = '0px Arial'.replace('0', this.fontSize);
+            this.ctx.fillStyle = this.color;
             loop();
 
             function loop() {
                 if (self.isPlay) {
-                    ctx.drawImage(self.vdo, 0, 0, W, H);
-                    fm = ctx.getImageData(0, 0, W, H);
-                        ctx.clearRect(0, 0, W, H);
+                    var ctx = self.ctx;
+                    var W = self.W;
+                    var H = self.H;
+                    var colLen = self.colLen;
+                    var rowLen = self.rowLen;
+                    var fontSize = parseInt(self.fontSize);
+                    var text = self.text;
+                    var len = parseInt(256 / self.text.length);
+                    var gray, k;
 
-                    if(fm){
-                        data=fm.data;
+                    ctx.drawImage(self.vdo, 0, 0, W, H);
+                    try {
+                        var fm = ctx.getImageData(0, 0, W, H);
+                    } catch (err) {
+                        ctx.clearRect(0, 0, W, H);
                     }
                     ctx.clearRect(0, 0, W, H);
+                    var data = fm.data;
+                    var str = '';
                     for (var j = 0; j < colLen; j++) {
                         str = '';
                         for (var i = 0; i < rowLen; i++) {
                             var index = (j * W + i) * fontSize;
                             index *= 4;
                             var gray = data[index] * 0.299 + data[index + 1] * 0.587 + data[index + 2] * 0.114;
-                            str += self._AddText(gray);
+                            var k = parseInt(gray / len);
+                            if (k > len - 1) {
+                                k = len - 1;
+                            }
+                            str += text[k];
                         }
                         ctx.fillText(str, 0, j * fontSize, W)
                     }
+                    ctx = W = H = colLen = rowLen = fontSize = gray = k = data = str= i = j = fm = null;
                 }
-                raf(loop)
-            }
+                raf(loop) 
         },
         openCamera: function(cameraW, cameraH, audioBool) {
             var vdo = this.vdo;
