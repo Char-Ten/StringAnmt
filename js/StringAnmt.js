@@ -94,6 +94,7 @@
                     ctx = W = H = colLen = rowLen = fontSize = gray = k = data = str= i = j = fm = null;
                 }
                 raf(loop) 
+            }
         },
         openCamera: function(cameraW, cameraH, audioBool) {
             var vdo = this.vdo;
