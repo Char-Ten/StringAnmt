@@ -91,7 +91,7 @@
                         }
                         ctx.fillText(str, 0, j * fontSize, W)
                     }
-                    ctx = W = H = colLen = rowLen = fontSize = gray = k = data = str= i = j = fm = null;
+                    ctx = W = H = colLen = rowLen = fontSize = gray = k = data = str= i = j = fm=text=len = null;
                 }
                 raf(loop) 
             }
