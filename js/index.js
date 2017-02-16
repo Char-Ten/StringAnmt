@@ -3,7 +3,7 @@ var StrAnmt = new StringAnmt({
     canvasId: 'cvs',
 });
 StrAnmt.openCamera(
-    window.screen.width,
-    window.screen.height,
+    800,
+    600,
     false
 )
