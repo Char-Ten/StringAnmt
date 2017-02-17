@@ -57,7 +57,8 @@
             loop();
 
             function loop() {
-                if (self.isPlay) {
+                var isPlay=self.isPlay;
+                if (isPlay) {
                     var ctx = self.ctx;
                     var W = self.W;
                     var H = self.H;
@@ -73,6 +74,7 @@
                         var fm = ctx.getImageData(0, 0, W, H);
                     } catch (err) {
                         ctx.clearRect(0, 0, W, H);
+                        if(isPlay) raf(loop);
                     }
                     ctx.clearRect(0, 0, W, H);
                     var data = fm.data;
@@ -91,7 +93,7 @@
                         }
                         ctx.fillText(str, 0, j * fontSize, W)
                     }
-                    ctx = W = H = colLen = rowLen = fontSize = gray = k = data = str= i = j = fm=text=len = null;
+                    isPlay = ctx = W = H = colLen = rowLen = fontSize = gray = k = data = str= i = j = fm = text =len = null;
                 }
                 raf(loop) 
             }
