@@ -74,7 +74,7 @@
                         var fm = ctx.getImageData(0, 0, W, H);
                     } catch (err) {
                         ctx.clearRect(0, 0, W, H);
-                        if(isPlay) raf(loop);
+                        return 
                     }
                     ctx.clearRect(0, 0, W, H);
                     var data = fm.data;
