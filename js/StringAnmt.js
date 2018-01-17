@@ -70,7 +70,7 @@
                     var gray, k;
 
                     ctx.drawImage(self.vdo, 0, 0, W, H);
-                    try {
+                    /*try {
                         var fm = ctx.getImageData(0, 0, W, H);
                     } catch (err) {
                         ctx.clearRect(0, 0, W, H);
@@ -93,7 +93,7 @@
                         }
                         ctx.fillText(str, 0, j * fontSize, W)
                     }
-                    isPlay = ctx = W = H = colLen = rowLen = fontSize = gray = k = data = str= i = j = fm = text =len = null;
+                    isPlay = ctx = W = H = colLen = rowLen = fontSize = gray = k = data = str= i = j = fm = text =len = null;*/
                 }
                 raf(loop) 
             }
