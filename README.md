@@ -45,4 +45,4 @@ StrAnmt.openCamera(
 * 不对ff做兼容
 * 拒绝IE，从我做起
 * 据了解，微信以及腾讯系的移动浏览器内核X5在读取视频流的时候有卡顿的bug
-* webGL版本请访问:[StringAnmt2](https://github.com/Char-Ten/webglLearningDemoes/tree/master/learnningWebSite/StringAnmt2)
+* webGL版本请访问:[StringAnmt2](https://github.com/Char-Ten/webglLearningDemoes/tree/master/learnningWebSite/StringAnmt2)，除X5内核外，其他兼容的移动端浏览器均可流畅跑webGL版本
