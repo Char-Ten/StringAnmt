@@ -43,4 +43,6 @@ StrAnmt.openCamera(
 * 请放在本地或者https协议的服务器里，这样方能开启摄像头。
 * 请在高版本浏览器下使用
 * 不对ff做兼容
-* 拒绝IE，从我坐起
+* 拒绝IE，从我做起
+* 据了解，微信以及腾讯系的移动浏览器内核X5在读取视频流的时候有卡顿的bug
+* webGL版本请访问:[StringAnmt2](https://github.com/Char-Ten/webglLearningDemoes/tree/master/learnningWebSite/StringAnmt2)
